@@ -41,6 +41,9 @@ export function AuthProvider(props: IAuthProvider) {
     const { token, user } = response.data
 
     localStorage.setItem("nlw_heat_token", token)
+
+    api.defaults.headers.common.authorization = `Bearer ${token}` //adicionar o token no cabeçalho da requisição
+
     setUser(user)
   }
   
